@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css} "/>
+</head>
+<body>
+<form method="POST" th:action="@{/upload}" enctype="multipart/form-data">
+    <div class="form-group m-5">
+
+        <label for="file1">File 1</label>
+        <input type="file" name="file1" class="form-control-file" id="file1" accept=".csv"><br><br>
+
+        <label for="file2">File 2</label>
+        <input type="file" name="file2" class="form-control-file" id="file2" accept=".csv"><br><br>
+
+        <label for="collation_policy">Collation policy</label>
+        <select name="collation_policy" id="collation_policy">
+            <option value="full">full</option>
+            <option value="normal">normal</option>
+        </select><br><br>
+
+        <label for="no_lines">Number of lines to process</label>
+        <input type="number" name="no_lines" id="no_lines"><br><br>
+
+        <label for="download">Download</label>
+        <input type="checkbox" name="download" value="true" id="download"><br><br>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+    </div>
+</form>
+</body>
+
+</html>
