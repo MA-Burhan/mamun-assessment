@@ -40,18 +40,17 @@ public class UploadController {
         String[][] collation = uploadService.processUpload(file1, file2, CollationPolicy, n);
 
         List<String> list = Arrays.stream(collation).map(row -> String.join(",", row)).collect(Collectors.toList());
-
-       model.addAttribute("collation", list);
+        StringBuilder sb = new StringBuilder();
+        for(String value : list){
+            sb.append(value + '\n');
+        }
+        this.csv = sb.toString();
 
        if(download != null && download.equals("true")){
-           StringBuilder sb = new StringBuilder();
-           for(String value : list){
-               sb.append(value + '\n');
-           }
-           this.csv = sb.toString();
            return "redirect:download";
        } else{
-           return "result";
+           model.addAttribute("collation", this.csv);
+           return "index";
        }
     }
 
